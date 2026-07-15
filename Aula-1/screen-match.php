@@ -10,6 +10,7 @@ for ($i = 1; $i < $argc; $i ++) {
     $somaDeNotas += $argv[$i];
 };
 
+
 $quantidadeDeNotas = $argc - 1;
 $notaFinal = $somaDeNotas / $quantidadeDeNotas;
 
@@ -32,5 +33,22 @@ $genero = match ($nomeFilme) {
 };
 
 echo "O gênero do filme é: $genero";
+
+$filme = [
+    "Thor: Ragnarock",
+    2021,
+    7.8,
+    "super-heroi"
+];
+
+$testeArray = [
+    "a",
+    "b",
+    1,
+    2,
+    3
+];
+
+echo var_dump($testeArray);
 
 

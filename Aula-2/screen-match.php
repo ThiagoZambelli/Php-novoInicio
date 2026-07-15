@@ -55,6 +55,10 @@ $filme = [
 
 
 echo $filme["ano"];
+$posicaoDoisPontos = strpos($filme['nome'], ":");
+var_dump($posicaoDoisPontos);
+
+var_dump(substr($filme['nome'],0 , $posicaoDoisPontos));
 
 //teste de parametro por referencia
 $estadoCopo = "vazio";

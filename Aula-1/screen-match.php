@@ -35,10 +35,10 @@ $genero = match ($nomeFilme) {
 echo "O gênero do filme é: $genero";
 
 $filme = [
-    "Thor: Ragnarock",
-    2021,
-    7.8,
-    "super-heroi"
+    "nome" => "Thor: Ragnarock",
+    "ano" => 2021,
+    "nota" => 7.8,
+    "genero" => "super-heroi"
 ];
 
 $testeArray = [

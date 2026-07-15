@@ -59,3 +59,8 @@ encherCopoNormal($estadoCopo);
 echo "\nEstado copo apos encherCopoNormal: " . $estadoCopo;
 encherCopoPorReferencia($estadoCopo);
 echo "\nEstado copo apos encherCopoPorReferencia: " . $estadoCopo;
+
+echo "\n" . json_encode($filme);
+
+echo "\n";
+var_dump(json_decode('{"nome":"Thor: Ragnarok","ano":2021,"nota":7.8,"genero":"super-her\u00f3i"}'));

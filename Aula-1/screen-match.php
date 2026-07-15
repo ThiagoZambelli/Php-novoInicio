@@ -3,14 +3,18 @@ echo "\tBem-vindo(a) ao screen match!\n";
 
 $nomeFilme = "Top Gun - Maverick";
 $anoLancamento = 2022;
-$somaDeNotas = 9 + 6 + 8 + 7.5 + 5;
-$notaFilme = $somaDeNotas / 5;
+$somaDeNotas = 0;
 $incluidoNoPlano = true;
 
+for ($i = 1; $i < $argc; $i ++) {
+    $somaDeNotas += $argv[$i];
+};
 
+$quantidadeDeNotas = $argc - 1;
+$notaFinal = $somaDeNotas / $quantidadeDeNotas;
 
 echo "Nome do Filme: " . $nomeFilme . "\n";
-echo "Nota Filme: " . $notaFilme;
+echo "Nota Filme: " . $notaFinal . "\n";
 
 if ($anoLancamento > 2022) {
     echo "Esse filme é um lançamento\n";
@@ -28,3 +32,5 @@ $genero = match ($nomeFilme) {
 };
 
 echo "O gênero do filme é: $genero";
+
+

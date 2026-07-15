@@ -55,3 +55,19 @@ $filme = [
 
 
 echo $filme["ano"];
+
+//teste de parametro por referencia
+$estadoCopo = "vazio";
+
+function encherCopoNormal (string $estadoCopo): void {
+    $estadoCopo = "cheio";
+};
+
+function encherCopoPorReferencia (string &$estadoCopo): void {
+    $estadoCopo = "cheio";
+};
+
+encherCopoNormal($estadoCopo);
+echo "\nEstado copo apos encherCopoNormal: " . $estadoCopo;
+encherCopoPorReferencia($estadoCopo);
+echo "\nEstado copo apos encherCopoPorReferencia: " . $estadoCopo;

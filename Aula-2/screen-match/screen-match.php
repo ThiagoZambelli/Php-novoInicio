@@ -63,4 +63,8 @@ echo "\nEstado copo apos encherCopoPorReferencia: " . $estadoCopo;
 echo "\n" . json_encode($filme);
 
 echo "\n";
-var_dump(json_decode('{"nome":"Thor: Ragnarok","ano":2021,"nota":7.8,"genero":"super-her\u00f3i"}'));
+var_dump(json_decode('{"nome":"Thor: Ragnarok","ano":2021,"nota":7.8,"genero":"super-her\u00f3i"}', true));
+
+$filmeComoStringJSON = json_encode($filme);
+
+file_put_contents(__DIR__ . "/filme.json" , $filmeComoStringJSON);

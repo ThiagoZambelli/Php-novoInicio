@@ -1,7 +1,7 @@
 <?php
 
-$teste = require __DIR__ . "/filme.json";
-
+$teste = __DIR__ . "/filme.json";
 $conteudoJSON = file_get_contents($teste);
+$filme = json_decode($conteudoJSON, true);
 
-echo json_decode($conteudoJSON);
+var_dump($filme);

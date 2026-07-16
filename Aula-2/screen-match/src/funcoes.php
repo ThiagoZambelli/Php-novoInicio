@@ -20,3 +20,13 @@ function encherCopoNormal (string $estadoCopo): void {
 function encherCopoPorReferencia (string &$estadoCopo): void {
     $estadoCopo = "cheio";
 };
+
+function criaFilme (string $nome, int $anoLancamento, float $nota, string $genero): array {
+
+    return [
+        'nome' => $nome,
+        'ano' => $anoLancamento,
+        'nota' => $nota,
+        'genero' => $genero
+    ];
+};

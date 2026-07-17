@@ -1,10 +1,16 @@
 <?php
 
 class Filme {
-    private string $nome;
-    private int $anoLancamento;
-    public string $genero;
-    private array $notas = [];
+   
+    private array $notas;
+
+    public function __construct(
+        private int $anoLancamento, 
+        private string $nome, 
+        private string $genero)
+    {
+       $this -> notas = [];
+    }
 
     public function avalia(float $nota): void {
         $this -> notas[] = $nota;
@@ -19,22 +25,13 @@ class Filme {
 
     public function anoLancamento(): int {
         return $this -> anoLancamento;
-    }
-    public function defineAnoLancamento(int $anoLancamento): void {
-        $this -> anoLancamento = $anoLancamento;
-    }
+    }    
 
     public function genero(): string {
         return $this -> genero;
     }
-    public function defineGenero(string $genero): void {
-        $this -> genero = $genero;
-    }
-
+    
     public function nome(): string {
         return $this -> nome;
-    }
-    public function defineNome(string $nome): void {
-        $this -> nome = $nome;
-    }
+    }    
 };

@@ -4,6 +4,7 @@ require __DIR__ . "/src/Modelo/Titulo.php";
 require __DIR__ . "/src/Modelo/Genero.php";
 require __DIR__ . "/src/Modelo/Filme.php";
 require __DIR__ . "/src/Modelo/Serie.php";
+require __DIR__ . "/src/Servicos/CalculadoraDeMaratona.php";
 
 echo "Bem-vindo ao Screen-match! \n";
 
@@ -33,3 +34,10 @@ var_dump($serie);
 
 echo "Media serie: " . $serie -> media() . "\n";
 echo "Media Filme: " . $filme ->media() . "\n";
+
+$calculadora = new CalculadoraDeMaratona();
+
+$calculadora -> inclui($filme);
+$calculadora -> inclui($serie);
+
+echo "\nPara maratinar " . $filme->nome . " e " . $serie->nome . " vai levar " . $calculadora->duracao() . " minutos!\n";

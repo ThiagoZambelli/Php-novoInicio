@@ -1,10 +1,14 @@
 <?php
 
+require __DIR__ . "/src/Modelo/TraisAvalia.php";
+require __DIR__ . "/src/Modelo/Avaliavel.php";
 require __DIR__ . "/src/Modelo/Titulo.php";
 require __DIR__ . "/src/Modelo/Genero.php";
 require __DIR__ . "/src/Modelo/Filme.php";
 require __DIR__ . "/src/Modelo/Serie.php";
+require __DIR__ . "/src/Modelo/Episodio.php";
 require __DIR__ . "/src/Servicos/CalculadoraDeMaratona.php";
+require __DIR__ . "/src/Servicos/ConversorNotaEstrela.php";
 
 echo "Bem-vindo ao Screen-match! \n";
 
@@ -23,6 +27,8 @@ $serie = new Serie(
     episodiosPorTemporada: 5,
     minutosPorEpisodio: 40,
 );
+
+$episodio = new Episodio(serie: $serie, nome: "Piloto", numero: 1);
 
 $filme->avalia(10);
 $filme->avalia(6);
@@ -45,3 +51,7 @@ $calculadora->inclui($filme);
 $calculadora->inclui($serie);
 
 echo "\nPara maratinar " . $filme->nome . " e " . $serie->nome . " vai levar " . $calculadora->duracao() . " minutos!\n";
+
+
+$conversor = new ConversorNotaEstrela();
+echo $conversor->converte($serie);

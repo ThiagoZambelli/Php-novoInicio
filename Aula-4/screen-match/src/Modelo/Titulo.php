@@ -1,5 +1,7 @@
 <?php
 
+namespace ScreenMatch\Modelo;
+
 abstract class titulo implements Avaliavel
 {
     use TraitsAvalia;

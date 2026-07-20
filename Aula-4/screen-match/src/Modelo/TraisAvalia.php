@@ -1,5 +1,7 @@
 <?php
 
+namespace ScreenMatch\Modelo;
+
 trait TraitsAvalia
 {
     private array $notas = [];

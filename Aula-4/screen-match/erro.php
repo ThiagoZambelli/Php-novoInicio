@@ -10,6 +10,13 @@ use ScreenMatch\Servicos\ConversorNotaEstrela;
 $serie = new Serie(nome: 'Nome serie', anoLancamento: 2023, genero: Genero::Comedia, temporadas: 7, episodiosPorTemporada: 20, minutosPorEpisodio: 30);
 $episodio = new Episodio(serie: $serie, nome: 'Piloto', numero: 1);
 
-$conversor = new ConversorNotaEstrela();
+try {
+    $episodio->avalia(45);
+    $episodio->avalia(-35);
 
-echo $conversor->converte($episodio);
+    $conversor = new ConversorNotaEstrela();
+
+    echo $conversor->converte($episodio);
+} catch (Exception $e) {
+    echo "um problema rolou: " , $e -> getMessage();
+}

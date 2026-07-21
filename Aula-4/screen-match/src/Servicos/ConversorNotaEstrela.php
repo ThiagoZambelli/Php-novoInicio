@@ -14,7 +14,7 @@ class ConversorNotaEstrela
 
             return round($nota) / 2;
         } catch (DivisionByZeroError $erro) {
-            echo $erro->getMessage();
+            echo "\n". $erro->getMessage();
             return 0;
         }
     }

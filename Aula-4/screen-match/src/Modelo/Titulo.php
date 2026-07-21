@@ -2,7 +2,7 @@
 
 namespace ScreenMatch\Modelo;
 
-abstract class titulo implements Avaliavel
+abstract class Titulo implements Avaliavel
 {
     use TraitsAvalia;
     public function __construct(

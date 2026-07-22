@@ -32,6 +32,7 @@ $notasAlunos = [
     ]
 ];
 
+// ordenador para usort completo
 function ordenaNotas(array $nota1, array $nota2){
     if($nota1['nota'] > $nota2['nota']){
         return -1;
@@ -41,6 +42,11 @@ function ordenaNotas(array $nota1, array $nota2){
     return 0;
 };
 
-usort($notasAlunos, 'ordenaNotas');
+// ordenador para usort de forma otimizada 
+function ordenaNotasEficiente(array $nota1, array $nota2){
+    return $nota2['nota'] <=> $nota1['nota'];
+};
+
+usort($notasAlunos, 'ordenaNotasEficiente');
 echo PHP_EOL . "Notas Alunos: ";
 var_dump($notasAlunos);

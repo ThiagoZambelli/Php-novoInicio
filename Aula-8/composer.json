@@ -13,5 +13,9 @@
             "email": "90356970+ThiagoZambelli@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "guzzlehttp/guzzle": "^8.0",
+        "symfony/dom-crawler": "^5.4",
+        "symfony/css-selector": "^6.0"
+    }
 }

@@ -1,0 +1,17 @@
+{
+    "name": "aula-8/buscador-curso",
+    "description": "Desenvolvido um buscador de curso em uma plataforma especifica",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Aula8\\BuscadorCurso\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Thiago Zambelli Oliveira",
+            "email": "90356970+ThiagoZambelli@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

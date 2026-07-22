@@ -62,3 +62,4 @@ var_dump(array_search("10", $notasAlunos));
 // array_key_exists verifica se a chave existe no array
 // in_array verifica se o valor existe
 // isset verifica se a chave existe e o valor não é nulo
+// array_search acha uma key pelo valor

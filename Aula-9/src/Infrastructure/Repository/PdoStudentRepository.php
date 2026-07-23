@@ -4,14 +4,14 @@ namespace Aula9\Pdo\Infrastructure\Repository;
 
 use Aula9\Pdo\Domain\Repository\StudentRepository;
 use Aula9\Pdo\Domain\Model\Student;
-use Aula9\Pdo\Infrastructure\Persistence\ConnectionCreator;
+use PDO;
 
 class PdoStudentRepository implements StudentRepository
 {
-    private \PDO $connection;
-    public function __construct()
+    private PDO $connection;
+    public function __construct(PDO $conection)
     {
-        $this->connection = ConnectionCreator::createConnection();
+        $this->connection = $conection;
     }
 
     public function allStudents(): array
@@ -46,8 +46,6 @@ class PdoStudentRepository implements StudentRepository
         }
         return $studentList;
     }
-
-
 
     public function save(Student $student): bool
     {

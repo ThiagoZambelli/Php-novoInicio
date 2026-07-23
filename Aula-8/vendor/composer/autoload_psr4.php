@@ -17,5 +17,5 @@ return array(
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
-    'Aula8\\BuscadorCurso\\' => array($baseDir . '/src'),
+    'Aula8\\BuscadorDeCursos\\' => array($baseDir . '/src'),
 );

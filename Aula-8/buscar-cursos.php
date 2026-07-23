@@ -1,9 +1,8 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require 'src/Buscador.php';
 
 use GuzzleHttp\Client;
-use Projeto\BuscadorDeCursos\Buscador;
+use Aula8\BuscadorDeCursos\Buscador;
 use Symfony\Component\DomCrawler\Crawler;
 
 $client = new Client();

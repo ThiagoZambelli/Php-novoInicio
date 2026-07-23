@@ -37,7 +37,7 @@ class ComposerStaticInitec301d4c635706b6a6db9a708b8177a2
         ),
         'A' =>
         array (
-            'Aula8\\BuscadorCurso\\' => 20,
+            'Aula8\\BuscadorDeCursos\\' => 23,
         ),
     );
 
@@ -87,7 +87,7 @@ class ComposerStaticInitec301d4c635706b6a6db9a708b8177a2
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Aula8\\BuscadorCurso\\' =>
+        'Aula8\\BuscadorDeCursos\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

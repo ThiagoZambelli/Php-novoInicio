@@ -4,7 +4,7 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Aula8\\BuscadorCurso\\": "src/"
+            "Aula8\\BuscadorDeCursos\\": "src/"
         }
     },
     "authors": [
@@ -17,5 +17,5 @@
         "guzzlehttp/guzzle": "^8.0",
         "symfony/dom-crawler": "^5.4",
         "symfony/css-selector": "^6.0"
-    }
+    }    
 }

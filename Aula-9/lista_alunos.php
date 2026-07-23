@@ -1,11 +1,11 @@
 <?php
 
-use Alura\Pdo\Domain\Model\Student;
+use Aula9\Pdo\Domain\Model\Student;
+use Aula9\Pdo\Infrastructure\Persistence\ConnectionCreator;
 
 require_once 'vendor/autoload.php';
 
-$caminhoBanco = __DIR__ . '/banco.sqlite';
-$pdo = new PDO('sqlite:' . $caminhoBanco);
+$pdo = ConnectionCreator::createConnection();
 
 $statement = $pdo->query('SELECT * FROM students');
 $studentDataList = $statement->fetchAll(PDO::FETCH_ASSOC);

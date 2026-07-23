@@ -1,10 +1,9 @@
 <?php
 
-
+use Aula9\Pdo\Infrastructure\Persistence\ConnectionCreator;
 require_once 'vendor/autoload.php';
 
-$caminhoBanco = __DIR__ . '/banco.sqlite';
-$pdo = new PDO('sqlite:' . $caminhoBanco);
+$pdo = ConnectionCreator::createConnection();
 
 $sqlDelete = 'DELETE FROM students WHERE id= ?';
 $preparedStatment = $pdo->prepare($sqlDelete);

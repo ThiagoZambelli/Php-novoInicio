@@ -1,13 +1,13 @@
 <?php
 
-use Alura\Pdo\Domain\Model\Student;
+use Aula9\Pdo\Domain\Model\Student;
+use Aula9\Pdo\Infrastructure\Persistence\ConnectionCreator;
 
 require_once 'vendor/autoload.php';
 
 // fetch utilizado para buscar e imprimir 1 a 1 sem comprometer a memoria
 
-$caminhoBanco = __DIR__ . '/banco.sqlite';
-$pdo = new PDO('sqlite:' . $caminhoBanco);
+$pdo = ConnectionCreator::createConnection();
 
 $statement = $pdo->query('SELECT * FROM students');
 

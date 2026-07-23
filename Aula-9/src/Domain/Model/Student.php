@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Pdo\Domain\Model;
+namespace Aula9\Pdo\Domain\Model;
 
 class Student
 {
@@ -15,6 +15,15 @@ class Student
         $this->birthDate = $birthDate;
     }
 
+    public function defineId(int $id): void
+    {
+        if (!is_null($this->id)) {
+            throw new \DomainException(message: 'Você só pode definir o ID uma vez');
+        }
+
+        $this->id = $id;
+    }
+
     public function id(): ?int
     {
         return $this->id;
@@ -25,9 +34,9 @@ class Student
         return $this->name;
     }
 
-    public function birthDate(): \DateTimeInterface
+    public function changeName(string $newName): void
     {
-        return $this->birthDate;
+        $this->name = $newName;
     }
 
     public function age(): int
@@ -35,5 +44,10 @@ class Student
         return $this->birthDate
             ->diff(new \DateTimeImmutable())
             ->y;
+    }
+
+    public function birthDate(): \DateTimeInterface
+    {
+        return $this->birthDate;
     }
 }

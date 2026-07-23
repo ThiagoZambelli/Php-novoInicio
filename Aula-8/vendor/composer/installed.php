@@ -3,7 +3,7 @@
         'name' => 'aula-8/buscador-curso',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '45fb09594ada3c17ba38c7b354fd09252076e609',
+        'reference' => 'aca466d707aae02387a96815ea1cf5190b993b75',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'aula-8/buscador-curso' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '45fb09594ada3c17ba38c7b354fd09252076e609',
+            'reference' => 'aca466d707aae02387a96815ea1cf5190b993b75',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

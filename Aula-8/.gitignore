@@ -1,0 +1,39 @@
+# Dependências do Composer
+/vendor/
+
+# Arquivos do Composer (descomente se for uma biblioteca)
+/composer.phar
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Cache
+.cache/
+.cache
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Configurações do VS Code
+.vscode/
+
+# Configurações do PHPStorm/IntelliJ
+.idea/
+
+# Arquivos de backup
+*.bak
+*.swp
+*.swo
+
+# Arquivos de ambiente (caso existam)
+.env
+.env.local
+
+# Relatórios de cobertura de testes
+coverage/
+.phpunit.result.cache

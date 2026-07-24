@@ -11,10 +11,15 @@ $studentRepository = new PdoStudentRepository($conection);
 
 $conection->beginTransaction();
 
-$aStudent = new Student(id: null, name: "Testolino JR.", birthDate: new DateTimeImmutable('1992-06-01'));
-$studentRepository->save($aStudent);
+try {
+    $aStudent = new Student(id: null, name: "Testolino JR.", birthDate: new DateTimeImmutable('1992-06-01'));
+    $studentRepository->save($aStudent);
 
-$anotherStudent = new Student(id: null, name: "Tetolinaria da silva", birthDate: new DateTimeImmutable('1999-06-01'));
-$studentRepository->save($anotherStudent);
+    $anotherStudent = new Student(id: null, name: "Tetolinaria da silva", birthDate: new DateTimeImmutable('1999-06-01'));
+    $studentRepository->save($anotherStudent);
 
-$conection->commit();
+    $conection->commit();
+} catch (\RuntimeException $e) {
+    echo $e->getMessage();
+    $conection->rollback();
+};

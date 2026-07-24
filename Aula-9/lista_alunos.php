@@ -1,22 +1,14 @@
 <?php
 
-use Aula9\Pdo\Domain\Model\Student;
+
 use Aula9\Pdo\Infrastructure\Persistence\ConnectionCreator;
+use Aula9\Pdo\Infrastructure\Repository\PdoStudentRepository;
 
 require_once 'vendor/autoload.php';
 
 $pdo = ConnectionCreator::createConnection();
+$repository = new PdoStudentRepository($pdo);
+$studentList = $repository->allStudents();
 
-$statement = $pdo->query('SELECT * FROM students');
-$studentDataList = $statement->fetchAll(PDO::FETCH_ASSOC);
-$studentList = [];
-
-foreach ($studentDataList as $studentData){
-    $studentList[] = new Student(
-        id: $studentData['id'], 
-        name: $studentData['name'], 
-        birthDate:new DateTimeImmutable($studentData['birth_date']
-        )); 
-}
 
 var_dump($studentList);

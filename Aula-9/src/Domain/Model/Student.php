@@ -2,11 +2,18 @@
 
 namespace Aula9\Pdo\Domain\Model;
 
+use Aula9\Pdo\Domain\Model\Phone;
+
 class Student
 {
     private ?int $id;
     private string $name;
     private \DateTimeInterface $birthDate;
+    /**
+     * Summary of phones
+     * @var Phone[]
+     */
+    private array $phones;
 
     public function __construct(?int $id, string $name, \DateTimeInterface $birthDate)
     {
@@ -49,5 +56,19 @@ class Student
     public function birthDate(): \DateTimeInterface
     {
         return $this->birthDate;
+    }
+
+    public function addPhones(Phone $phone): void
+    {
+        $this->phones[] = $phone;
+    }
+
+    /**
+     * Summary of phones
+     * @return Phone[]
+     */
+    public function phones(): array
+    {
+        return $this->phones;
     }
 }

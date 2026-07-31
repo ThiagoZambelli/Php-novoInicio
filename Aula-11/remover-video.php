@@ -1,13 +1,14 @@
 <?php
 
+use Aula11\Mvc\Repository\VideoRepository;
+
 $dbPath = __DIR__ . '/banco.sqlite';
 $pdo = new PDO("sqlite:$dbPath");
 
 $id = $_GET["id"];
 
-$sql = 'DELETE FROM videos WHERE id = ?;';
-$statement = $pdo->prepare($sql);
-$statement->bindValue(1, $id);
-$statement->execute();
+$repository = new VideoRepository($pdo);
+$repository->remove($id);
 
-header('Location: /index.php');
+
+header('Location: /');

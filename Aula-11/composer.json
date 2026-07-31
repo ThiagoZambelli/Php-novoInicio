@@ -1,0 +1,7 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Aula11\\Mvc\\": "src/"
+        }
+    }
+}

@@ -3,7 +3,7 @@
 namespace Aula11\Mvc\Controller;
 use Aula11\Mvc\Repository\VideoRepository;
 
-class VideoListController
+class VideoListController implements Controller
 {
     
 

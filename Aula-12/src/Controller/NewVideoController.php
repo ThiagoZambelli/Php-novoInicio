@@ -9,9 +9,7 @@ use Aula12\Mvc\Repository\VideoRepository;
 
 class NewVideoController implements Controller
 {
-    public function __construct(private VideoRepository $videoRepository)
-    {
-    }
+    public function __construct(private VideoRepository $videoRepository) {}
 
     public function processaRequisicao(): void
     {
@@ -25,8 +23,17 @@ class NewVideoController implements Controller
             header('Location: /?sucesso=0');
             return;
         }
+        $video = new Video($url, $titulo);
 
-        $success = $this->videoRepository->add(new Video($url, $titulo));
+        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            move_uploaded_file(
+                $_FILES['image']['tmp_name'],
+                __DIR__ . '/../../public/img/uploads' . uniqid() . $_FILES['image']['name']
+            );
+            $video->setFilePath($_FILES['image']['name']);
+        }
+
+        $success = $this->videoRepository->add($video);
         if ($success === false) {
             header('Location: /?sucesso=0');
         } else {

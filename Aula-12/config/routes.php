@@ -11,4 +11,5 @@ return [
     'GET|/remover-video' => \Aula12\Mvc\Controller\DeleteVideoController::class,
     'GET|/login' => \Aula12\Mvc\Controller\LoginFormController::class,
     'POST|/login' => \Aula12\Mvc\Controller\LoginController::class,
+    'GET|/logout' => \Aula12\Mvc\Controller\LogoutController::class,
 ];

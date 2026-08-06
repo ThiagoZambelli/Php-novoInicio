@@ -9,9 +9,7 @@ use Aula12\Mvc\Repository\VideoRepository;
 
 class EditVideoController implements Controller
 {
-    public function __construct(private VideoRepository $videoRepository)
-    {
-    }
+    public function __construct(private VideoRepository $videoRepository) {}
 
     public function processaRequisicao(): void
     {
@@ -31,18 +29,29 @@ class EditVideoController implements Controller
             header('Location: /?sucesso=0');
             return;
         }
-         
+
         $video = new Video($url, $titulo);
         $video->setId($id);
 
-        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            move_uploaded_file(
-                $_FILES['image']['tmp_name'],
-                __DIR__ . '/../../public/img/uploads' . uniqid() . $_FILES['image']['name']
-            );
-            $video->setFilePath($_FILES['image']['name']);
-        }
+        if (
+            isset($_FILES['image']) &&
+            $_FILES['image']['error'] === UPLOAD_ERR_OK
+        ) {
+            $nomeArquivo = uniqid() . basename($_FILES['image']['name']);
 
+            $caminhoDestino = __DIR__
+                . '/../../public/img/uploads/'
+                . $nomeArquivo;
+
+            $uploadRealizado = move_uploaded_file(
+                $_FILES['image']['tmp_name'],
+                $caminhoDestino
+            );
+
+            if ($uploadRealizado) {
+                $video->setFilePath($nomeArquivo);
+            }
+        }
 
         $success = $this->videoRepository->update($video);
 

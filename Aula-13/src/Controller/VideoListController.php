@@ -6,7 +6,7 @@ namespace Aula13\Mvc\Controller;
 
 use Aula13\Mvc\Repository\VideoRepository;
 
-class VideoListController implements Controller
+class VideoListController extends ControllerWithHtml implements Controller
 {
     public function __construct(private VideoRepository $videoRepository)
     {
@@ -15,6 +15,6 @@ class VideoListController implements Controller
     public function processaRequisicao(): void
     {        
         $videoList = $this->videoRepository->all();
-        require_once __DIR__ . '/../../views/video-list.php';
+        echo $this->renderTemplate('video-list.php', ['videoList' => $videoList]);
     }
 }

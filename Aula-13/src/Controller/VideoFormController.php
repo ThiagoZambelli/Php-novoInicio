@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Aula13\Mvc\Controller;
 
 use Aula13\Mvc\Entity\Video;
+use Aula13\Mvc\Helper\HtmlRendererTrait;
 use Aula13\Mvc\Repository\VideoRepository;
 
-class VideoFormController extends ControllerWithHtml implements Controller
+class VideoFormController implements Controller
 {
+    use HtmlRendererTrait;
     public function __construct(private VideoRepository $repository)
     {
     }

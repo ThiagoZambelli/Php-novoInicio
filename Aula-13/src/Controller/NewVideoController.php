@@ -5,22 +5,26 @@ declare(strict_types=1);
 namespace Aula13\Mvc\Controller;
 
 use Aula13\Mvc\Entity\Video;
+use Aula13\Mvc\Helper\FlashMessageTrait;
 use Aula13\Mvc\Repository\VideoRepository;
 
 class NewVideoController implements Controller
 {
+    use FlashMessageTrait;
     public function __construct(private VideoRepository $videoRepository) {}
 
     public function processaRequisicao(): void
     {
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
         if ($url === false) {
-            header('Location: /?sucesso=0');
+            $this->addErrorMessage('Url invalida');
+            header('Location: /novo-video');
             return;
         }
         $titulo = filter_input(INPUT_POST, 'titulo');
         if ($titulo === false) {
-            header('Location: /?sucesso=0');
+            $this->addErrorMessage('Titulo não informado.');
+            header('Location: /novo-video');
             return;
         }
         $video = new Video($url, $titulo);
@@ -47,7 +51,8 @@ class NewVideoController implements Controller
 
         $success = $this->videoRepository->add($video);
         if ($success === false) {
-            header('Location: /?sucesso=0');
+            $this->addErrorMessage('Erro ao cadastrar Video');
+            header('Location: /novo-video');
         } else {
             header('Location: /?sucesso=1');
         }

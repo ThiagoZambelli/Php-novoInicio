@@ -15,20 +15,6 @@ class SeriesController extends Controller
             'teste1',
             'teste2'
         ];
-        $html = '<ul>';
-
-        if ($id) {
-            $html .= "<li>$series[$id]</li>";
-            $html .= '</ul>';
-
-            return $html;
-        };
-
-        foreach ($series as $serie) {
-            $html .= "<li>$serie</li>";
-        };
-        $html .= '</ul>';
-
-        return $html;
+        return view('listar-series', compact('series'));
     }
 }

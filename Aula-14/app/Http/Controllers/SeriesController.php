@@ -8,13 +8,16 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        $id = $request->get('id');
+
         $series = [
-            '',
             'teste',
             'teste1',
             'teste2'
         ];
-        return view('listar-series', compact('series'));
+        return view('series.index', compact('series'));
+    }
+    public function create(Request $request)
+    {
+        return view('series.create');
     }
 }

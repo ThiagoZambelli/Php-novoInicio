@@ -1,4 +1,4 @@
-<x-layout title="Nova serie">
+<x-layout title="Nova serie">   
     <form action="/series/salvar" method="post">
         @csrf
         <div class="mb-3">

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeriesForRequest;
+use App\Models\Episode;
+use App\Models\Season;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 
@@ -10,7 +12,7 @@ class SeriesController extends Controller
 {
     public function index(Request $request)
     {
-        $series = Serie::all();
+        $series = Serie::with(['seasons'])->get();
         $menssagenSucesso = $request->session()->get("mensagem.successo");
 
         return view('series.index', compact('series'))->with('mensagemSucesso', $menssagenSucesso);
@@ -22,6 +24,27 @@ class SeriesController extends Controller
     public function store(SeriesForRequest $request)
     {
         $serie = Serie::create($request->all());
+        $seasons = [];
+        for ($i = 1; $i <= $request->sessonsQty; $i++) {
+            $seasons[] = [
+                'series_id' => $serie->id,
+                'number' => $i,
+            ];
+        }
+        Season::insert($seasons);
+
+        $episodes = [];
+        foreach ($serie->seasons as $season) {
+            for ($j = 1; $j <= $request->episodesPerSeason; $j++) {
+                $episodes[] = [
+                    'season_id' => $season->id,
+                    'number' => $j,
+                ];
+            }
+        }
+        Episode::insert($episodes);
+
+
         $request->session()->flash('mensagem.successo', "Série '{$serie->name}' adicionada com sucesso");
         return redirect('/series');
     }

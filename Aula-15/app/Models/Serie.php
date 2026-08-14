@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,12 +11,15 @@ class Serie extends Model
     use HasFactory;
     protected $fillable = ['name'];
 
-    public function temporadas()
+    public function seasons()
     {
         return $this->hasMany(Season::class, 'series_id');
     }
-    public function episodioas()
+
+    protected static function booted()
     {
-        return $this->hasMany(Episode::class);
+        self::addGlobalScope('ordered', function (Builder $queryBuilder) {
+            $queryBuilder->orderBy('name');
+        });
     }
 }

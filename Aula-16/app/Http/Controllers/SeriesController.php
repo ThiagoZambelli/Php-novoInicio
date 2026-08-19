@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\SeriesForRequest;
+use App\Models\Episode;
+use App\Models\Season;
+use App\Models\Serie;
+use Illuminate\Http\Request;
+
+class SeriesController extends Controller
+{
+    public function index(Request $request)
+    {
+        $series = Serie::with(['seasons'])->get();
+        $menssagenSucesso = $request->session()->get("mensagem.successo");
+
+        return view('series.index', compact('series'))->with('mensagemSucesso', $menssagenSucesso);
+    }
+    public function create(Request $request)
+    {
+        return view('series.create');
+    }
+    public function store(SeriesForRequest $request)
+    {
+        $serie = Serie::create($request->all());
+        $seasons = [];
+        for ($i = 1; $i <= $request->sessonsQty; $i++) {
+            $seasons[] = [
+                'series_id' => $serie->id,
+                'number' => $i,
+            ];
+        }
+        Season::insert($seasons);
+
+        $episodes = [];
+        foreach ($serie->seasons as $season) {
+            for ($j = 1; $j <= $request->episodesPerSeason; $j++) {
+                $episodes[] = [
+                    'season_id' => $season->id,
+                    'number' => $j,
+                ];
+            }
+        }
+        Episode::insert($episodes);
+
+
+        $request->session()->flash('mensagem.successo', "Série '{$serie->name}' adicionada com sucesso");
+        return redirect('/series');
+    }
+    public function destroy(Serie $serie, Request $request)
+    {
+        $serie->delete();
+        $request->session()->flash('mensagem.successo', "Série '{$serie->name}' removida");
+
+        return redirect('/series');
+    }
+    public function edit(Serie $serie)
+    {
+
+        return view('series.edit')->with('serie', $serie);
+    }
+    public function update(SeriesForRequest $request, Serie $serie)
+    {
+
+        $serie->update($request->all());
+
+        $request->session()->flash(
+            'mensagem.successo',
+            "Série '{$serie->name}' alterada com sucesso"
+        );
+
+        return redirect('/series');
+    }
+}
